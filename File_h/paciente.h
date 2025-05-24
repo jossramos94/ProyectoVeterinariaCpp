@@ -14,7 +14,7 @@ public:
 };
 
 void agregar_paciente();
-//void buscar_paciente();
+void buscar_paciente();
 //void editar_paciente();
 
 

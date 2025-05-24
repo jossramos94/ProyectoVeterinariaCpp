@@ -33,7 +33,7 @@ do{
             agregar_paciente();
             break;
         case 2:
-            //buscar_paciente();
+            buscar_paciente();
             break;
         case 3:
             //editar_paciente();
