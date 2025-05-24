@@ -36,7 +36,7 @@ do{
             buscar_paciente();
             break;
         case 3:
-            //editar_paciente();
+            editar_paciente();
             break;
         case 4:
             cout << "Saliendo del programa..." << endl;

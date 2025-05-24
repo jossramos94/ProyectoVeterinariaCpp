@@ -47,9 +47,10 @@ void agregar_paciente(){
 
 }
 
-void buscar_paciente(){
+bool buscar_paciente(){
     // Crear un objeto Pacientes
     Paciente paciente;
+    // Solicitar el código del paciente a buscar
     int codigo_buscar;
 
     cout << "Ingrese el codigo del paciente a buscar: ";
@@ -59,7 +60,7 @@ void buscar_paciente(){
     ifstream archivo("pacientes.bin", ios::binary);
     if (!archivo) {
         cerr << "Error al abrir el archivo." << endl;
-        return;
+        return false;
     }
 
     bool encontrado = false;
@@ -83,7 +84,54 @@ void buscar_paciente(){
 
     // Cerrar el archivo
     archivo.close();
+    return encontrado;
 }
+
 // Función para editar un paciente
-// void editar_paciente(){
-//     // Crear un objeto Pacientes
+
+void editar_paciente() {
+
+    int codigoBuscado;
+    cout << "Ingrese el código del paciente a editar: ";
+    cin >> codigoBuscado;
+
+    fstream archivo("pacientes.bin", ios::in | ios::out | ios::binary);
+    if (!archivo) {
+        cerr << "Error al abrir el archivo." << endl;
+        return;
+    }
+
+    Paciente paciente;
+    // streampos es una clase de la biblioteca estándar de C++ que representa una posición en un flujo de entrada/salida (stream).
+    // Se utiliza para almacenar y manipular posiciones dentro de archivos o flujos, permitiendo operaciones como buscar (seek) o decir (tell) la ubicación actual.
+    // Es comúnmente usada con archivos binarios y funciones como seekg, seekp, tellg y tellp en streams de C++.
+    streampos pos;
+    bool encontrado = false;
+
+    while (archivo.read(reinterpret_cast<char*>(&paciente), sizeof(Paciente))) {
+        if (paciente.codigo == codigoBuscado) {
+            pos = archivo.tellg() - static_cast<streampos>(sizeof(Paciente));
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "Paciente no encontrado.\n";
+        archivo.close();
+        return;
+    }
+
+    cout << "Paciente encontrado. Ingrese los nuevos datos:\n";
+    cin.ignore();
+    cout << "Nuevo nombre: "; cin.getline(paciente.nombre, 50);
+    cout << "Nueva raza: "; cin.getline(paciente.raza, 30);
+    cout << "Nuevo tipo (perro/gato): "; cin.getline(paciente.tipo, 30);
+    cout << "Nueva fecha de nacimiento: "; cin.getline(paciente.fecha_nacimiento, 12);
+
+    archivo.seekp(pos);
+    archivo.write(reinterpret_cast<char*>(&paciente), sizeof(Paciente));
+    cout << "Datos actualizados con éxito.\n";
+
+    archivo.close();
+}
