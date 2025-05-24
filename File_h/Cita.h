@@ -4,8 +4,8 @@
 #define CITA_H
 
 class Cita{   
-// Definición de la clase Duenio
-// Esta clase representa a un dueño de una mascota y contiene información relevante sobre él.
+// Definición de la clase Cita
+// Esta clase representa una cita médica y contiene información relevante sobre ella.
 
 public:
     char tratamiento[50];
