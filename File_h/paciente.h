@@ -3,11 +3,9 @@
 #ifndef PACIENTE_H
 #define PACIENTE_H
 
-#include <string>
+class Paciente{
 
-using namespace std;
-
-struct  Pacientes{
+public:
     int codigo;
     char nombre[30];
     char raza[30];
@@ -16,8 +14,8 @@ struct  Pacientes{
 };
 
 void agregar_paciente();
-void buscar_paciente();
-void editar_paciente();
+//void buscar_paciente();
+//void editar_paciente();
 
 
 #endif
