@@ -14,7 +14,7 @@ public:
 };
 
 void agregar_paciente();
-bool buscar_paciente();
+bool buscar_paciente(int codigo_buscar);
 void editar_paciente();
 
 

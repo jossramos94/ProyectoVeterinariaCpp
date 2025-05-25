@@ -8,15 +8,16 @@ class Cita{
 // Esta clase representa una cita médica y contiene información relevante sobre ella.
 
 public:
+    int codigo;
     char tratamiento[50];
     char fecha[20];
     char hora[10];
 
 };
 
-void agregar_cita();
+void agendar_cita();
 bool buscar_cita();
-void editar_editar();
+void editar_cita();
 
 
 #endif

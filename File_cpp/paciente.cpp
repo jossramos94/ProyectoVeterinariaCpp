@@ -47,14 +47,12 @@ void agregar_paciente(){
 
 }
 
-bool buscar_paciente(){
+bool buscar_paciente(int codigo_buscar) {
     // Crear un objeto Pacientes
     Paciente paciente;
-    // Solicitar el código del paciente a buscar
-    int codigo_buscar;
-
-    cout << "Ingrese el codigo del paciente a buscar: ";
-    cin >> codigo_buscar;
+   
+    //cout << "Ingrese el codigo del paciente a buscar: ";
+    //cin >> codigo_buscar;
 
     // Abrir el archivo en modo de lectura
     ifstream archivo("pacientes.bin", ios::binary);
@@ -67,7 +65,7 @@ bool buscar_paciente(){
     // Leer el archivo hasta encontrar el paciente
     while (archivo.read(reinterpret_cast<char*>(&paciente), sizeof(Paciente))) {
         if (paciente.codigo == codigo_buscar) {
-            cout << "Paciente encontrado:" << endl;
+            cout << "\nPaciente encontrado:" << endl;
             cout << "Codigo: " << paciente.codigo << endl;
             cout << "Nombre: " << paciente.nombre << endl;
             cout << "Raza: " << paciente.raza << endl;
@@ -122,7 +120,7 @@ void editar_paciente() {
         return;
     }
 
-    cout << "Paciente encontrado. Ingrese los nuevos datos:\n";
+    cout << "\nPaciente encontrado. Ingrese los nuevos datos:\n";
     cin.ignore();
     cout << "Nuevo nombre: "; cin.getline(paciente.nombre, 50);
     cout << "Nueva raza: "; cin.getline(paciente.raza, 30);

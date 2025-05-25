@@ -64,7 +64,7 @@ bool buscar_duenio(){
     // Leer el archivo hasta encontrar el duenio
     while (archivo.read(reinterpret_cast<char*>(&duenio), sizeof(Duenio))) {
         if (duenio.dui == dui_buscar) {
-            cout << "Duenio encontrado:" << endl;
+            cout << "\nDuenio encontrado:" << endl;
             cout << "DUI: " << duenio.dui << endl;
             cout << "Nombre: " << duenio.nombre << endl;
             cout << "Direccion: " << duenio.direccion << endl;
@@ -118,7 +118,7 @@ void editar_duenio() {
         return;
     }
 
-    cout << "Duenio encontrado. Ingrese los nuevos datos:\n";
+    cout << "\nDuenio encontrado. Ingrese los nuevos datos:\n";
     cin.ignore();
     cout << "Ingrese el nuevo numero de DUI del dueño: ";
     cin >> duenio.dui;
